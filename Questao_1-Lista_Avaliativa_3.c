@@ -57,7 +57,7 @@ int Decimal_Para_Binario(char num_romano[]){
     }
 
 
-    printf("O numero romano %s na base 2: ", num_romano);
+    printf("%s na base 2: ", num_romano);
     for (int j = i - 1; j >= 0; j--){
         printf("%d", num_binario[j]);
     }
@@ -77,37 +77,16 @@ void Decimal_Para_Hexadecimal(char num_romano[]){
             resto = resto + 48;
         } 
         else{
-            resto = resto + 55;
+            resto = resto + 87;                                     // ASCii apenas e somente
         }
         num_hexadecimal[i++] = resto;
         resultado_decimal = resultado_decimal / 16;
     }
 
 
-    printf("O numero romano %s na base 16: ", num_romano);
+    printf("%s na base 16: ", num_romano);
     for (j = i - 1; j > 0; j--) {
         printf("%c", num_hexadecimal[j]);
-    }
-    printf("\n");
-}
-
-
-void Decimal_Para_Octal(char num_romano[]){
-    int resultado_decimal = Romano_Para_Decimal(num_romano);
-    int num_octal[100];
-    int i = 0;
-
-
-    while (resultado_decimal != 0){
-        num_octal[i] = resultado_decimal % 8;
-        resultado_decimal = resultado_decimal / 8;
-        i++;
-    }
-
-
-    printf("O numero romano %s na base 8: ", num_romano);
-    for (int j = i - 1; j >= 0; j--){
-        printf("%d", num_octal[j]);
     }
     printf("\n");
 }
@@ -117,18 +96,13 @@ int main(){
     char num_romano[20];
 
 
-    printf("Insira um numero romano: ");
     scanf("%s", num_romano);                                        //scanf funciona melhor do que fgets(num_romano, sizeof(num_romano), stdin); + strtok(time1, "\n");
 
 
     Decimal_Para_Binario(num_romano);
-    Decimal_Para_Octal(num_romano);
-    printf("O numero romano %s na base 10: %d \n", num_romano, Romano_Para_Decimal(num_romano));
+    printf("%s na base 10: %d\n", num_romano, Romano_Para_Decimal(num_romano));
     Decimal_Para_Hexadecimal(num_romano);
-    /*
-    printf("Octal: %o\n", Romano_Para_Decimal(num_romano));           //Poderia só fazer isso porém quero ir atrás da lógica;
-    printf("Hexadecimal: %x\n", Romano_Para_Decimal(num_romano));     //Poderia só fazer isso porém quero ir atrás da lógica; 
-    */
+
 
     return 0;
 }
