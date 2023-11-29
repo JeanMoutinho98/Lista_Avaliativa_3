@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 
-    int Validar_Placa(char placa[]){
+    int Validar_Placa(char placa[], char dia[]){
         int tamanho;
 
         //LLL-NNNN
@@ -17,15 +17,21 @@
         //Placa invalida
         else{
             printf("Placa invalida\n");
+            if(strcmp( dia, "DOMINGO") != 0 && strcmp(dia, "SEGUNDA-FEIRA") != 0 && strcmp(dia, "TERCA-FEIRA") != 0 && strcmp(dia, "QUARTA-FEIRA") != 0 && strcmp(dia, "QUINTA-FEIRA") != 0 && strcmp(dia, "SEXTA-FEIRA") != 0 && strcmp(dia, "SABADO") != 0 ){
+                printf("Dia da semana invalido\n");
+                exit(0);
+            }
+            else{
+                exit(0);
+            }
         }
 
-
-        return tamanho;
+        return tamanho;    
     }
 
 
     int Validar_Dia(char placa[], char dia[]){
-        int tamanho = Validar_Placa(placa);
+        int tamanho = Validar_Placa(placa, dia);
 
 
         if(strcmp(dia, "SEGUNDA-FEIRA") == 0 && (placa[tamanho] == '0' || placa[tamanho] == '1')){
@@ -35,25 +41,25 @@
                 printf("%s pode circular segunda-feira\n", placa);
         }
         else if(strcmp(dia, "TERCA-FEIRA") == 0 && (placa[tamanho] == '2' || placa[tamanho] == '3')){
-            printf("A placa %s nao pode circular terca-feira\n", placa);
+            printf("%s nao pode circular terca-feira\n", placa);
         }
            else if(strcmp(dia, "TERCA-FEIRA") == 0 && (placa[tamanho] != '2' || placa[tamanho] != '3')){
                 printf("%s pode circular terca-feira\n", placa);
         }
         else if(strcmp(dia, "QUARTA-FEIRA") == 0 && (placa[tamanho] == '4' || placa[tamanho] == '5')){
-            printf("A placa %s nao pode circular quarta-feira\n", placa);
+            printf("%s nao pode circular quarta-feira\n", placa);
         }
                 else if(strcmp(dia, "QUARTA-FEIRA") == 0 && (placa[tamanho] != '4' || placa[tamanho] != '5')){
                     printf("%s pode circular quarta-feira\n", placa);
         }
         else if(strcmp(dia, "QUINTA-FEIRA") == 0 && (placa[tamanho] == '6' || placa[tamanho] == '7')){
-            printf("A placa %s nao pode circular quinta-feira\n", placa);
+            printf("%s nao pode circular quinta-feira\n", placa);
         }
                 else if(strcmp(dia, "QUINTA-FEIRA") == 0 && (placa[tamanho] != '6' || placa[tamanho] != '7')){
                     printf("%s pode circular quinta-feira\n", placa);
         }
         else if(strcmp(dia, "SEXTA-FEIRA") == 0 && (placa[tamanho] == '8' || placa[tamanho] == '9')){
-            printf("A placa %s nao pode circular sexta-feira\n", placa);
+            printf("%s nao pode circular sexta-feira\n", placa);
         }
                 else if(strcmp(dia, "SEXTA-FEIRA") == 0 && (placa[tamanho] != '8' || placa[tamanho] != '9')){
                     printf("%s pode circular sexta-feira\n", placa);
